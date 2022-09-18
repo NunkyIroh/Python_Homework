@@ -23,7 +23,7 @@ player1 = input('Первый игрок, введите Ваше имя:\n')
 player2 = input('Второй игрок, введите Ваше имя: \n')
 players = [player1, player2]
 
-total_sweets = 202
+total_sweets = 2021
 max_number_move = 28
 
 # print(total_sweets % max_number_move)

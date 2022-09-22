@@ -1,38 +1,24 @@
-# Задайте последовательность чисел. Напишите программу, которая выведет список 
-# неповторяющихся элементов исходной последовательности.
+# Задайте список из N элементов, заполненных числами из промежутка [-N, N]. 
+# Найдите произведение элементов на указанных позициях. П
+# озиции хранятся в файле file.txt в одной строке одно число.
 
-print('Чтобы вывести список неповторяющихся элементов, задайте последовательность чисел!')
-userList = list(map(int, input('Введите числа списка через пробел: ').split()))
-print(f'Ваш список: {userList}')
+import random
 
-# uniqueList = list(set(userList))
-# a = userList - uniqueList
+N = int(input("Введите размер списка: ")) 
+a = []
 
-# print(f'Cписок неповторяющихся элементов {uniqueList} вашего списка {userList}!') # просто убирает повторения в списке
+# for i in range(N):  
+#     new_element = random.randint(-N, N)
+#     a.append(new_element)
+# print(f'Ваш список: {a}')
 
-uniqueList = []
+a = [(lambda i: random.randint(-N, N)) (i) for i in range(1, N+1)]
+print(f'Ваш список: {a}')
 
-for i in range(len(userList)):
-    for j in range(len(userList)):
-        if i != j and userList[i] == userList[j]:
-            break
-    else:
-        uniqueList.append(userList[i]) 
-
-
-
-print(f'Cписок неповторяющихся элементов {uniqueList} вашего списка {userList}!')
-
-# b = [1, 1, 2, 3, 3, 4, 5]
-#  a = []
-#  for i in b:
-#     if b.count(i) == 1:
-#          a.append(i)
-
-
-
-# inp = list(map(int, input('Insert numbrers: ').split()))
-# print(set(inp))
-
-# a= [1,2,2,2,2,3,1,4]
-# print(set(a))
+num = 1
+with open('file.txt') as file:
+    for pos in file:
+        if int(pos) < N:
+            num *= a[int(pos)]
+        # else: num *= 1
+print(f'Произведение элементов на указанных позициях{num}')
